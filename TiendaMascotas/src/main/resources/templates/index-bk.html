@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="Plantilla/Template :: head">
+<meta charset="UTF-8">
+<body>
+	<header th:replace="Plantilla/Template :: header"> </header>
+
+	<!-- Contenido -->
+
+	<div class="container mt=4">
+
+		<a th:href="@{/newUsuario}" class="btn btn-primary">NuevoUsuario</a> <a
+			th:href="@{/newCliente}" class="btn btn-primary">NuevoCliente</a> <a
+			th:href="@{/newProveedor}" class="btn btn-primary">NuevoProveedor</a>
+		<a th:href="@{/newProducto}" class="btn btn-primary">NuevoProducto</a>
+		<table class="table table-striped table-hover">
+			<thead>
+				<tr>
+					<th>CEDULA USUARIO</th>
+					<th>NOMBRE USUARIO</th>
+					<th>CORREO USUARIO</th>
+					<th>USUARIO USUARIO</th>
+					<th>PASSWORD USUARIO</th>
+					<th>ACCIÓN</th>
+					<th>ACCIÓN</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="u:${usuarios}">
+					<td th:text="${u.Cedula}"></td>
+					<td th:text="${u.Nombre}"></td>
+					<td th:text="${u.Correo}"></td>
+					<td th:text="${u.Usuario}"></td>
+					<td th:text="${u.Clave}"></td>
+					<td><a th:href="@{/editarUsuario/}+${u.Cedula}"
+						class="btn btn-warning">Editar</a></td>
+					<td><a th:onclick="eliminarUsuario([[${u.Cedula}]])"
+						class="btn btn-danger">Eliminar</a></td>
+				</tr>
+
+				<table class="table table-striped table-hover">
+					<thead>
+						<tr>
+							<th>CEDULA CLIENTE</th>
+							<th>NOMBRE CLIENTE</th>
+							<th>DIRECCION CLIENTE</th>
+							<th>TELEFONO CLIENTE</th>
+							<th>CORREO CLIENTE</th>
+							<th>ACCIÓN</th>
+							<th>ACCIÓN</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="c:${clientes}">
+							<td th:text="${c.Cedula_Cli}"></td>
+							<td th:text="${c.Nombre_Cli}"></td>
+							<td th:text="${c.Direccion_Cli}"></td>
+							<td th:text="${c.Telefono_Cli}"></td>
+							<td th:text="${c.Correo_Cli}"></td>
+							<td><a th:href="@{/editarCliente/}+${c.Cedula_Cli}"
+								class="btn btn-warning">Editar</a></td>
+							<td><a th:onclick="eliminarCliente([[${c.Cedula_Cli}]])"
+								class="btn btn-danger">Eliminar</a></td>
+						</tr>
+
+						<table class="table table-striped table-hover">
+							<thead>
+								<tr>
+									<th>NIT PROVEEDOR</th>
+									<th>NOMBRE PROVEEDOR</th>
+									<th>DIRECCION PROVEEDOR</th>
+									<th>TELEFONO PROVEEDOR</th>
+									<th>CIUDAD PROVEEDOR</th>
+									<th>ACCIÓN</th>
+									<th>ACCIÓN</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr th:each="p:${proveedores}">
+									<td th:text="${p.NIT_Prov}"></td>
+									<td th:text="${p.Nombre_Prov}"></td>
+									<td th:text="${p.Direccion_Prov}"></td>
+									<td th:text="${p.Telefono_Prov}"></td>
+									<td th:text="${p.Ciudad_Prov}"></td>
+									<td><a th:href="@{/editarProveedor/}+${p.NIT_Prov}"
+										class="btn btn-warning">Editar</a></td>
+									<td><a th:onclick="eliminarProveedor([[${p.NIT_Prov}]])"
+										class="btn btn-danger">Eliminar</a></td>
+								</tr>
+
+								<table class="table table-striped table-hover">
+									<thead>
+										<tr>
+											<th>CODIGO PRODUCTO</th>
+											<th>NOMBRE PRODUCTO</th>
+											<th>NIT-PROVEEDOR PRODUCTO</th>
+											<th>PRECIO COMPRA</th>
+											<th>IVA PRODUCTO</th>
+											<th>PRECIO VENTA</th>
+											<th>ACCIÓN</th>
+											<th>ACCIÓN</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr th:each="prod:${productos}">
+											<td th:text="${prod.Codigo_Prod}"></td>
+											<td th:text="${prod.Nombre_Prod}"></td>
+											<td th:text="${prod.NIT_Prov_Prod}"></td>
+											<td th:text="${prod.Precio_Compra}"></td>
+											<td th:text="${prod.IVA_Prod}"></td>
+											<td th:text="${prod.Precio_Vta}"></td>
+											<td><a th:href="@{/editarProducto/}+${prod.Codigo_Prod}"
+												class="btn btn-warning">Editar</a></td>
+											<td><a th:onclick="eliminarProducto([[${prod.Codigo_Prod}]])"
+												class="btn btn-danger">Eliminar</a></td>
+										</tr>
+
+									</tbody>
+
+									</div>
+								</table>
+								<script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+								<script
+									src="https://unpkg.com/sweetalert/dist/sweetalert.min.js">
+									
+								</script>
+								<script src="funciones.js"></script>
+								</div>
+
+
+
+
+								<script src="https://code.jquery.com/jquery-3.4.1.js">
+									
+								</script>
+								<script
+									src="https://unpkg.com/sweetalert/dist/sweetalert.min.js">
+									
+								</script>
+								<script src="funciones.js"></script>
+
+								</div>
+
+								<!-- Pie de Página -->
+								<footer th:replace="Plantilla/Template :: footer"> </footer>
+</body>
+</html>
